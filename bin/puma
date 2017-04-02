@@ -1,4 +1,4 @@
-#! /bin/sh
-pwd | sed -ne 's/\/home\/\([[:alpha:]]\+\)\/.*/\1/gp' | xargs -I user cat /home/user/fazenda.pid | xargs kill -9
-pwd | sed -ne 's/\/home\/\([[:alpha:]]\+\)\/.*/\1/gp' | xargs -I user bundle exec puma -e development -b unix:///home/user/fazenda.sock --pidfile /home/user/fazenda.pid -d
+#!/bin/bash
+cat ~/fazenda.pid | xargs kill -9
+bundle exec puma -e development -b unix:///$HOME/fazenda.sock --pidfile ~/fazenda.pid -d
 
